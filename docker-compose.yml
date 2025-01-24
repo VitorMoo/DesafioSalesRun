@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: django_web
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_DB=gamification_db
+      - POSTGRES_USER=gamification_user
+      - POSTGRES_PASSWORD=secret123
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DJANGO_DEBUG=1
+
+  db:
+    image: postgres:14
+    container_name: django_db
+    environment:
+      - POSTGRES_DB=gamification_db
+      - POSTGRES_USER=gamification_user
+      - POSTGRES_PASSWORD=secret123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:

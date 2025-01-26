@@ -28,6 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'accounts.Users'
+
+LOGIN_REDIRECT_URL = '/core/my-challenges/'
+
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -38,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +62,7 @@ ROOT_URLCONF = 'DesafioSalesrun.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],  # Diretório global de templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

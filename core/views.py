@@ -32,6 +32,7 @@ def home(request):
     }
     return render(request, 'core/home.html', context)
 
+
 @login_required
 def complete_challenge(request, challenge_id):
     user_challenge = get_object_or_404(UserChallenge, id=challenge_id, user=request.user)
@@ -46,6 +47,7 @@ def complete_challenge(request, challenge_id):
         messages.success(request, "Desafio concluído!")
     else:
         messages.error(request, "Você não pode concluir este desafio.")
+
     return redirect('my_challenges')
 
 

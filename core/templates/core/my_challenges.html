@@ -17,23 +17,20 @@
             <tr>
                 <td>{{ uc.challenge.name }}</td>
                 <td>
-                <span class="badge
-                    {% if uc.status == 'completed' %}bg-success text-white
-                    {% elif uc.status == 'accepted' %}bg-info text-white
-                    {% elif uc.status == 'pending' %}bg-warning text-dark
-                    {% elif uc.status == 'declined' %}bg-danger text-white
-                    {% else %}bg-secondary text-white{% endif %}">
-                    {% if uc.status == 'declined' %}
-                        Recusado
-                    {% else %}
-                        {{ uc.get_status_display }}
-                    {% endif %}
-                </span>
+                    <span class="badge
+                        {% if uc.status == 'completed' %}bg-success text-white
+                        {% elif uc.status == 'accepted' %}bg-info text-white
+                        {% elif uc.status == 'pending' %}bg-warning text-dark
+                        {% elif uc.status == 'declined' %}bg-danger text-white
+                        {% else %}bg-secondary text-white{% endif %}">
+                        {% if uc.status == 'declined' %}
+                            Recusado
+                        {% else %}
+                            {{ uc.get_status_display }}
+                        {% endif %}
+                    </span>
                 </td>
-
-
                 <td>{{ uc.challenge.points }}</td>
-
                 <td>
                     {% if uc.status == 'pending' %}
                         <form method="POST" action="{% url 'accept_challenge' uc.id %}" style="display:inline;">
@@ -43,6 +40,11 @@
                         <form method="POST" action="{% url 'decline_challenge' uc.id %}" style="display:inline;">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">Recusar</button>
+                        </form>
+                    {% elif uc.status == 'accepted' %}
+                        <form method="POST" action="{% url 'complete_challenge' uc.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-sm">Concluir</button>
                         </form>
                     {% else %}
                         <span class="text-muted">-</span>

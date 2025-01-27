@@ -114,9 +114,4 @@ No painel administrativo, siga os passos abaixo:
 - Aceite ou recuse a participação nos desafios.
 - Visualize detalhes completos dos desafios diretamente no portal.
 
-## Fotos do Projeto
-![App Screenshot](static/images/login.png)
-![App Screenshot](static/images/pg_inicial.png)
-![App Screenshot](static/images/meus_desafios.png)
-![App Screenshot](static/images/Ranking.png)
 

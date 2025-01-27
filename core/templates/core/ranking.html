@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Ranking de Corretores</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Nome</th>
+                <th>Pontuação Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users_ranking %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    {% if user.first_name or user.last_name %}
+                        {{ user.first_name }} {{ user.last_name }}
+                    {% else %}
+                        {{ user.username }}
+                    {% endif %}
+                </td>
+                <td>{{ user.total_points }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum corretor está no ranking ainda.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

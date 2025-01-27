@@ -1,0 +1,236 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #235ADB;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 60px;
+    margin-right: 15px;
+}
+
+.nav-link {
+    color: #ffffff;
+    background-color: #235ADB;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    background-color: #4c78e0;
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 40px;
+    flex: 1;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    height: 150px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.btn {
+    border-radius: 50px;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #235ADB;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #4c78e0;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #b02a37;
+    transform: scale(1.05);
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.table {
+    margin-top: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background: #235ADB;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 40px;
+    }
+
+    .card img {
+        height: 120px;
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+}
+footer {
+    background-color: #0D122D;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: #235ADB;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover {
+    color: #4c78e0;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    footer {
+        font-size: 0.85rem;
+    }
+}
+

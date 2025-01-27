@@ -142,3 +142,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_COOKIE_NAME = 'portal_session'
+
+if 'admin' in os.getenv('DJANGO_SETTINGS_MODULE', ''):
+    SESSION_COOKIE_NAME = 'admin_session'

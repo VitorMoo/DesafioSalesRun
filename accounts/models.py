@@ -7,7 +7,7 @@ class Users(AbstractUser):
         ('corretor', 'Corretor'),
     )
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='corretor')
-    cpf = models.CharField(max_length=14, unique=True, blank=True, null=True)
+    cpf = models.CharField(max_length=11, unique=True, blank=False, null=False, help_text="Ex: 12345678901")
     total_points = models.PositiveIntegerField(default=0)
 
 

@@ -9,6 +9,10 @@ Desenvolver um portal de campanhas de gamificação onde administradores podem g
 
 **Back-end:** Python, Django
 
+**Banco de Dados** PostgreSQL
+
+**Containers** Docker
+
 ## 📋 Funcionalidades Principais
 
 - **Corretores**:

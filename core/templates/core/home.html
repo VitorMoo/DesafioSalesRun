@@ -1,15 +1,83 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1 class="display-4">Bem-vindo ao Portal de Gamificação!</h1>
-    <p class="lead">Gerencie seus desafios e aumente seu ranking.</p>
-    <hr class="my-4">
-    {% if not user.is_authenticated %}
-        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Faça Login</a>
-        <a class="btn btn-secondary btn-lg" href="{% url 'register' %}" role="button">Registrar</a>
-    {% else %}
-        <a class="btn btn-primary btn-lg" href="{% url 'my_challenges' %}" role="button">Meus Desafios</a>
-    {% endif %}
+<div class="container mt-5">
+    <h2 class="text-center">Bem-vindo ao Portal de Campanhas {{ user.username }}!</h2>
+    <p class="text-center text-muted">Aqui está o resumo da sua participação:</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">Total de Pontos</h4>
+                    <p class="card-text fs-3 fw-bold">{{ total_pontos }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h4 class="card-title text-warning">Desafios Pendentes</h4>
+                    <p class="card-text fs-3 fw-bold">{{ desafios_resumo.pendentes }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h4 class="card-title text-success">Desafios Concluídos</h4>
+                    <p class="card-text fs-3 fw-bold">{{ desafios_resumo.concluidos }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mt-5">
+
+    <h3 class="text-center mt-5">Seus Desafios</h3>
+    <div class="row mt-3">
+        {% for user_challenge in desafios %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                {% if user_challenge.challenge.banner %}
+                <img src="{{ user_challenge.challenge.banner.url }}" class="card-img-top" alt="Banner do Desafio">
+                {% else %}
+                <div style="background-color: #f8f9fa; height: 200px;" class="d-flex align-items-center justify-content-center">
+                    <span class="text-muted">Sem imagem</span>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ user_challenge.challenge.name }}</h5>
+                    <p class="card-text"><strong>Descrição:</strong> {{ user_challenge.challenge.description }}</p>
+                    <p class="card-text"><strong>Regras:</strong> {{ user_challenge.challenge.rule_description }}</p>
+                    <p class="card-text"><strong>Pontos:</strong> {{ user_challenge.challenge.points }}</p>
+                    <p class="card-text">
+                        <strong>Status:</strong>
+                        <span class="badge
+                            {% if user_challenge.status == 'completed' %}
+                                badge-success
+                            {% elif user_challenge.status == 'pending' %}
+                                badge-warning
+                            {% elif user_challenge.status == 'declined' %}
+                                badge-danger
+                            {% else %}
+                                badge-secondary
+                            {% endif %}">
+                            {% if user_challenge.status == 'declined' %}
+                                Recusado
+                            {% else %}
+                                {{ user_challenge.get_status_display }}
+                            {% endif %}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">Nenhum desafio foi atribuído a você ainda.</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
